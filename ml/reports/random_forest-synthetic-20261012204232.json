@@ -1,0 +1,680 @@
+{
+  "active_model": {
+    "model_name": "random_forest",
+    "model_version": "random_forest-synthetic-20261012204232",
+    "artifact": "random_forest-synthetic-20261012204232.joblib",
+    "sha256": "634ab5f9b57dedbcdd9c4c517d87238b3a22daa5d5dfcfeb6a777c8062a8c949",
+    "feature_schema_version": "flow-v1",
+    "feature_columns": [
+      "flow_duration",
+      "packets_in",
+      "packets_out",
+      "bytes_in",
+      "bytes_out",
+      "dst_port",
+      "dst_port_well_known",
+      "bytes_per_packet_in",
+      "bytes_per_packet_out",
+      "packets_per_second",
+      "bytes_per_second",
+      "out_in_packet_ratio"
+    ],
+    "labels": [
+      "BENIGN",
+      "BruteForce",
+      "DoS",
+      "PortScan"
+    ],
+    "benign_label": "BENIGN",
+    "dataset": "synthetic",
+    "dataset_reference": "synthetic-flow-v1 (generated, seed=42, n=60000) - NOT a benchmark dataset",
+    "trained_at": "2026-10-12T20:42:32.997435Z",
+    "split": {
+      "method": "stratified random 60/20/20 after exact-duplicate removal",
+      "train": 36000,
+      "validation": 12000,
+      "test": 12000,
+      "seed": 42
+    },
+    "clean_report": {
+      "rows_in": 60000,
+      "invalid_rows_removed": 0,
+      "duplicate_rows_removed": 0,
+      "conflicting_label_rows_removed": 0,
+      "dropped_classes": [],
+      "rows_out": 60000,
+      "class_counts": {
+        "BENIGN": 41702,
+        "PortScan": 7297,
+        "DoS": 7287,
+        "BruteForce": 3714
+      }
+    },
+    "metrics": {
+      "labels": [
+        "BENIGN",
+        "BruteForce",
+        "DoS",
+        "PortScan"
+      ],
+      "per_class": {
+        "BENIGN": {
+          "precision": 0.9905,
+          "recall": 0.9977,
+          "f1": 0.9941,
+          "support": 8341
+        },
+        "BruteForce": {
+          "precision": 0.9944,
+          "recall": 0.9515,
+          "f1": 0.9725,
+          "support": 743
+        },
+        "DoS": {
+          "precision": 0.9841,
+          "recall": 0.9753,
+          "f1": 0.9797,
+          "support": 1457
+        },
+        "PortScan": {
+          "precision": 0.9868,
+          "recall": 0.976,
+          "f1": 0.9814,
+          "support": 1459
+        }
+      },
+      "macro": {
+        "precision": 0.9889,
+        "recall": 0.9751,
+        "f1": 0.9819
+      },
+      "accuracy": 0.9895,
+      "false_positive_rate": 0.00228,
+      "detection_rate": 0.97814,
+      "confusion_matrix": [
+        [
+          8322,
+          0,
+          10,
+          9
+        ],
+        [
+          23,
+          707,
+          6,
+          7
+        ],
+        [
+          32,
+          1,
+          1421,
+          3
+        ],
+        [
+          25,
+          3,
+          7,
+          1424
+        ]
+      ],
+      "test_rows": 12000,
+      "binary_pr_auc": 0.9875,
+      "latency": {
+        "single_row_ms_median": 2.847,
+        "single_row_ms_p95": 3.043,
+        "batch_rows": 5000,
+        "batch_rows_per_second": 127068.7
+      }
+    }
+  },
+  "experiments": [
+    {
+      "model_name": "logistic_regression",
+      "validation": {
+        "labels": [
+          "BENIGN",
+          "BruteForce",
+          "DoS",
+          "PortScan"
+        ],
+        "per_class": {
+          "BENIGN": {
+            "precision": 0.9922,
+            "recall": 0.9706,
+            "f1": 0.9813,
+            "support": 8340
+          },
+          "BruteForce": {
+            "precision": 0.8648,
+            "recall": 0.9556,
+            "f1": 0.9079,
+            "support": 743
+          },
+          "DoS": {
+            "precision": 0.9303,
+            "recall": 0.9801,
+            "f1": 0.9546,
+            "support": 1458
+          },
+          "PortScan": {
+            "precision": 0.9616,
+            "recall": 0.9781,
+            "f1": 0.9698,
+            "support": 1459
+          }
+        },
+        "macro": {
+          "precision": 0.9372,
+          "recall": 0.9711,
+          "f1": 0.9534
+        },
+        "accuracy": 0.9718,
+        "false_positive_rate": 0.02938,
+        "detection_rate": 0.98251,
+        "confusion_matrix": [
+          [
+            8095,
+            96,
+            100,
+            49
+          ],
+          [
+            25,
+            710,
+            3,
+            5
+          ],
+          [
+            18,
+            8,
+            1429,
+            3
+          ],
+          [
+            21,
+            7,
+            4,
+            1427
+          ]
+        ],
+        "test_rows": 12000
+      },
+      "test": {
+        "labels": [
+          "BENIGN",
+          "BruteForce",
+          "DoS",
+          "PortScan"
+        ],
+        "per_class": {
+          "BENIGN": {
+            "precision": 0.9903,
+            "recall": 0.9713,
+            "f1": 0.9808,
+            "support": 8341
+          },
+          "BruteForce": {
+            "precision": 0.8718,
+            "recall": 0.9515,
+            "f1": 0.9099,
+            "support": 743
+          },
+          "DoS": {
+            "precision": 0.9279,
+            "recall": 0.9719,
+            "f1": 0.9494,
+            "support": 1457
+          },
+          "PortScan": {
+            "precision": 0.9602,
+            "recall": 0.9753,
+            "f1": 0.9677,
+            "support": 1459
+          }
+        },
+        "macro": {
+          "precision": 0.9376,
+          "recall": 0.9675,
+          "f1": 0.9519
+        },
+        "accuracy": 0.9707,
+        "false_positive_rate": 0.02865,
+        "detection_rate": 0.97841,
+        "confusion_matrix": [
+          [
+            8102,
+            94,
+            96,
+            49
+          ],
+          [
+            23,
+            707,
+            6,
+            7
+          ],
+          [
+            31,
+            7,
+            1416,
+            3
+          ],
+          [
+            25,
+            3,
+            8,
+            1423
+          ]
+        ],
+        "test_rows": 12000,
+        "binary_pr_auc": 0.9829,
+        "latency": {
+          "single_row_ms_median": 0.36,
+          "single_row_ms_p95": 0.387,
+          "batch_rows": 5000,
+          "batch_rows_per_second": 5928560.9
+        }
+      },
+      "feature_importance": {
+        "bytes_out": 0.1377,
+        "bytes_per_second": 0.1284,
+        "packets_out": 0.1126,
+        "out_in_packet_ratio": 0.1119,
+        "packets_per_second": 0.102,
+        "flow_duration": 0.067,
+        "packets_in": 0.0651,
+        "dst_port": 0.063,
+        "bytes_in": 0.0618,
+        "bytes_per_packet_out": 0.0599,
+        "dst_port_well_known": 0.0485,
+        "bytes_per_packet_in": 0.0421
+      },
+      "selected": false
+    },
+    {
+      "model_name": "decision_tree",
+      "validation": {
+        "labels": [
+          "BENIGN",
+          "BruteForce",
+          "DoS",
+          "PortScan"
+        ],
+        "per_class": {
+          "BENIGN": {
+            "precision": 0.9917,
+            "recall": 0.9891,
+            "f1": 0.9904,
+            "support": 8340
+          },
+          "BruteForce": {
+            "precision": 0.9429,
+            "recall": 0.9556,
+            "f1": 0.9492,
+            "support": 743
+          },
+          "DoS": {
+            "precision": 0.9728,
+            "recall": 0.9815,
+            "f1": 0.9771,
+            "support": 1458
+          },
+          "PortScan": {
+            "precision": 0.9801,
+            "recall": 0.9794,
+            "f1": 0.9798,
+            "support": 1459
+          }
+        },
+        "macro": {
+          "precision": 0.9719,
+          "recall": 0.9764,
+          "f1": 0.9741
+        },
+        "accuracy": 0.9849,
+        "false_positive_rate": 0.01091,
+        "detection_rate": 0.98115,
+        "confusion_matrix": [
+          [
+            8249,
+            37,
+            33,
+            21
+          ],
+          [
+            25,
+            710,
+            3,
+            5
+          ],
+          [
+            21,
+            3,
+            1431,
+            3
+          ],
+          [
+            23,
+            3,
+            4,
+            1429
+          ]
+        ],
+        "test_rows": 12000
+      },
+      "test": {
+        "labels": [
+          "BENIGN",
+          "BruteForce",
+          "DoS",
+          "PortScan"
+        ],
+        "per_class": {
+          "BENIGN": {
+            "precision": 0.9904,
+            "recall": 0.9912,
+            "f1": 0.9908,
+            "support": 8341
+          },
+          "BruteForce": {
+            "precision": 0.9593,
+            "recall": 0.9515,
+            "f1": 0.9554,
+            "support": 743
+          },
+          "DoS": {
+            "precision": 0.9726,
+            "recall": 0.9746,
+            "f1": 0.9736,
+            "support": 1457
+          },
+          "PortScan": {
+            "precision": 0.9794,
+            "recall": 0.9767,
+            "f1": 0.978,
+            "support": 1459
+          }
+        },
+        "macro": {
+          "precision": 0.9754,
+          "recall": 0.9735,
+          "f1": 0.9745
+        },
+        "accuracy": 0.985,
+        "false_positive_rate": 0.00875,
+        "detection_rate": 0.97814,
+        "confusion_matrix": [
+          [
+            8268,
+            26,
+            27,
+            20
+          ],
+          [
+            23,
+            707,
+            6,
+            7
+          ],
+          [
+            33,
+            1,
+            1420,
+            3
+          ],
+          [
+            24,
+            3,
+            7,
+            1425
+          ]
+        ],
+        "test_rows": 12000,
+        "binary_pr_auc": 0.9828,
+        "latency": {
+          "single_row_ms_median": 0.307,
+          "single_row_ms_p95": 0.323,
+          "batch_rows": 5000,
+          "batch_rows_per_second": 7405575.2
+        }
+      },
+      "feature_importance": {
+        "flow_duration": 0.3038,
+        "out_in_packet_ratio": 0.2726,
+        "bytes_per_packet_in": 0.2472,
+        "packets_in": 0.0762,
+        "dst_port": 0.0482,
+        "bytes_per_second": 0.0332,
+        "bytes_in": 0.0087,
+        "packets_out": 0.0043,
+        "bytes_per_packet_out": 0.0037,
+        "packets_per_second": 0.0011,
+        "bytes_out": 0.001,
+        "dst_port_well_known": 0.0
+      },
+      "selected": false
+    },
+    {
+      "model_name": "random_forest",
+      "validation": {
+        "labels": [
+          "BENIGN",
+          "BruteForce",
+          "DoS",
+          "PortScan"
+        ],
+        "per_class": {
+          "BENIGN": {
+            "precision": 0.9919,
+            "recall": 0.9968,
+            "f1": 0.9943,
+            "support": 8340
+          },
+          "BruteForce": {
+            "precision": 0.9916,
+            "recall": 0.9556,
+            "f1": 0.9733,
+            "support": 743
+          },
+          "DoS": {
+            "precision": 0.9869,
+            "recall": 0.9835,
+            "f1": 0.9852,
+            "support": 1458
+          },
+          "PortScan": {
+            "precision": 0.9855,
+            "recall": 0.9794,
+            "f1": 0.9825,
+            "support": 1459
+          }
+        },
+        "macro": {
+          "precision": 0.989,
+          "recall": 0.9788,
+          "f1": 0.9838
+        },
+        "accuracy": 0.9905,
+        "false_positive_rate": 0.00324,
+        "detection_rate": 0.98142,
+        "confusion_matrix": [
+          [
+            8313,
+            2,
+            12,
+            13
+          ],
+          [
+            25,
+            710,
+            3,
+            5
+          ],
+          [
+            20,
+            1,
+            1434,
+            3
+          ],
+          [
+            23,
+            3,
+            4,
+            1429
+          ]
+        ],
+        "test_rows": 12000
+      },
+      "test": {
+        "labels": [
+          "BENIGN",
+          "BruteForce",
+          "DoS",
+          "PortScan"
+        ],
+        "per_class": {
+          "BENIGN": {
+            "precision": 0.9905,
+            "recall": 0.9977,
+            "f1": 0.9941,
+            "support": 8341
+          },
+          "BruteForce": {
+            "precision": 0.9944,
+            "recall": 0.9515,
+            "f1": 0.9725,
+            "support": 743
+          },
+          "DoS": {
+            "precision": 0.9841,
+            "recall": 0.9753,
+            "f1": 0.9797,
+            "support": 1457
+          },
+          "PortScan": {
+            "precision": 0.9868,
+            "recall": 0.976,
+            "f1": 0.9814,
+            "support": 1459
+          }
+        },
+        "macro": {
+          "precision": 0.9889,
+          "recall": 0.9751,
+          "f1": 0.9819
+        },
+        "accuracy": 0.9895,
+        "false_positive_rate": 0.00228,
+        "detection_rate": 0.97814,
+        "confusion_matrix": [
+          [
+            8322,
+            0,
+            10,
+            9
+          ],
+          [
+            23,
+            707,
+            6,
+            7
+          ],
+          [
+            32,
+            1,
+            1421,
+            3
+          ],
+          [
+            25,
+            3,
+            7,
+            1424
+          ]
+        ],
+        "test_rows": 12000,
+        "binary_pr_auc": 0.9875,
+        "latency": {
+          "single_row_ms_median": 2.847,
+          "single_row_ms_p95": 3.043,
+          "batch_rows": 5000,
+          "batch_rows_per_second": 127068.7
+        }
+      },
+      "feature_importance": {
+        "out_in_packet_ratio": 0.1461,
+        "flow_duration": 0.1306,
+        "bytes_in": 0.1196,
+        "dst_port": 0.1074,
+        "bytes_per_packet_in": 0.1005,
+        "packets_in": 0.0905,
+        "bytes_out": 0.0813,
+        "packets_out": 0.0752,
+        "bytes_per_packet_out": 0.0651,
+        "bytes_per_second": 0.0347,
+        "packets_per_second": 0.0308,
+        "dst_port_well_known": 0.0182
+      },
+      "selected": true
+    },
+    {
+      "model_name": "isolation_forest",
+      "selected": false,
+      "deployable": false,
+      "test": {
+        "labels": [
+          "BENIGN",
+          "ATTACK"
+        ],
+        "per_class": {
+          "BENIGN": {
+            "precision": 0.8439,
+            "recall": 0.9814,
+            "f1": 0.9075,
+            "support": 8341
+          },
+          "ATTACK": {
+            "precision": 0.9326,
+            "recall": 0.5862,
+            "f1": 0.7199,
+            "support": 3659
+          }
+        },
+        "macro": {
+          "precision": 0.8883,
+          "recall": 0.7838,
+          "f1": 0.8137
+        },
+        "accuracy": 0.8609,
+        "false_positive_rate": 0.01858,
+        "detection_rate": 0.58623,
+        "confusion_matrix": [
+          [
+            8186,
+            155
+          ],
+          [
+            1514,
+            2145
+          ]
+        ],
+        "test_rows": 12000,
+        "binary_pr_auc": 0.9087,
+        "note": "Binary benign-vs-attack; fitted on benign training rows only; contamination=0.02",
+        "latency": {
+          "single_row_ms_median": 3.822,
+          "single_row_ms_p95": 3.96,
+          "batch_rows": 5000,
+          "batch_rows_per_second": 156503.9
+        }
+      }
+    }
+  ],
+  "environment": {
+    "python": "3.14.7",
+    "platform": "macOS-27.2-arm64-arm-64bit-Mach-O",
+    "scikit_learn": "1.9.1",
+    "pandas": "3.0.6",
+    "numpy": "2.5.4"
+  }
+}

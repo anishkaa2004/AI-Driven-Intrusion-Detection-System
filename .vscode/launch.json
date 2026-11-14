@@ -1,0 +1,73 @@
+{
+  // Run and Debug configurations (Ctrl+Shift+D). Select the .venv interpreter first:
+  // Ctrl+Shift+P -> "Python: Select Interpreter" -> .venv
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Backend (FastAPI)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": ["app.main:app", "--host", "127.0.0.1", "--port", "8000"],
+      "cwd": "${workspaceFolder}/backend",
+      "justMyCode": true
+    },
+    {
+      "name": "Dashboard (Vite)",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run dev",
+      "cwd": "${workspaceFolder}/frontend"
+    },
+    {
+      "name": "Demo traffic: all scenarios once",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/replay_flows.py",
+      "args": ["--scenario", "all"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Demo traffic: loop every 30 s",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/replay_flows.py",
+      "args": ["--scenario", "all", "--loop", "30"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Agent: run (device must be enrolled)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "agent",
+      "args": ["run"],
+      "cwd": "${workspaceFolder}/agent",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "ML: train model (synthetic)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/ml/src/train.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Setup: seed admin + demo device",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/seed_demo_data.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "AI-IDS: Backend + Dashboard",
+      "configurations": ["Backend (FastAPI)", "Dashboard (Vite)"],
+      "stopAll": true
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Secrets and local state
+.env
+backend/.demo_credentials.json
+backend/*.db
+backend/*.db-wal
+backend/*.db-shm
+
+# ML: datasets and large artifacts stay out of Git (check dataset licences)
+ml/data/*
+!ml/data/.gitkeep
+ml/artifacts/*.joblib
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+.DS_Store
+
+# Logs from start.sh
+logs/

@@ -1,0 +1,52 @@
+{
+  // Terminal -> Run Task...
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "AI-IDS: start everything + demo traffic",
+      "type": "shell",
+      "command": "./start.sh --demo",
+      "windows": { "command": "powershell -ExecutionPolicy Bypass -File .\\start.ps1 -Demo" },
+      "options": { "cwd": "${workspaceFolder}" },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "AI-IDS: first-time setup (venv + packages)",
+      "type": "shell",
+      "command": "python3 -m venv .venv && .venv/bin/python -m pip install -r backend/requirements.txt -r agent/requirements.txt && cd frontend && npm install",
+      "windows": {
+        "command": "python -m venv .venv; .venv\\Scripts\\python.exe -m pip install -r backend\\requirements.txt -r agent\\requirements.txt; cd frontend; npm.cmd install"
+      },
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "AI-IDS: run backend tests",
+      "type": "shell",
+      "command": "../.venv/bin/python -m pytest -q",
+      "windows": { "command": "..\\.venv\\Scripts\\python.exe -m pytest -q" },
+      "options": { "cwd": "${workspaceFolder}/backend" },
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "AI-IDS: run agent tests",
+      "type": "shell",
+      "command": "../.venv/bin/python -m pytest -q",
+      "windows": { "command": "..\\.venv\\Scripts\\python.exe -m pytest -q" },
+      "options": { "cwd": "${workspaceFolder}/agent" },
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "AI-IDS: build dashboard",
+      "type": "shell",
+      "command": "npm run build",
+      "windows": { "command": "npm.cmd run build" },
+      "options": { "cwd": "${workspaceFolder}/frontend" },
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}
